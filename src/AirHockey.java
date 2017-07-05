@@ -10,7 +10,7 @@ public class AirHockey extends JFrame{
 		new AirHockey();
 	}
 
-	int shift = 50;
+	int shift = 5;
 	public AirHockey(){
 	//	setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100);
 		setSize(1540, 800);
@@ -38,7 +38,7 @@ public class AirHockey extends JFrame{
 				respawnTimer.stop();
 			}
 		});
-		Timer t = new Timer(10, new ActionListener(){
+		Timer t = new Timer(30, new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				puck.setBounds(new Rectangle(shift, shift, Panel.this.getWidth()-2*shift, Panel.this.getHeight()-2*shift));
 				player.setBounds(new Rectangle(Panel.this.getWidth()/2, shift, (AirHockey.this.getWidth()-2*shift)/2, AirHockey.this.getHeight()-2*shift-46));				
@@ -264,7 +264,8 @@ class AIPlayer extends Player{
 			velocity = new Vector2d(dest.x-x, dest.y-y).getUnitVector().times(30);
 			puck.color = Color.WHITE;
 		}
-		
+		velocity.i*=3;
+		velocity.j*=3;
 		x+=velocity.i;
 		y+=velocity.j;
 		
